@@ -3,6 +3,7 @@ package com.assignment;
 public class BinaryTree<K extends Comparable<K>> {
 
     private INode<K> root;
+
     public void add(K key) {
         this.root = addRecursively(root, key); // comparing the present key with the root key
     }
@@ -24,6 +25,21 @@ public class BinaryTree<K extends Comparable<K>> {
     }
 
 
+    /**
+     * getSize is a method to find the size of the BST
+     * recursively finding size
+     *
+     * @return
+     */
+
+    public int getSize() {
+        return this.getSizeRecursive(root);
+    }
+
+    private int getSizeRecursive(INode<K> current) {
+        return current == null ? 0 : 1 + this.getSizeRecursive(current.left) + this.getSizeRecursive(current.right);
+    }
+
     public void displayNode() {
         displayNode(root);
     }
@@ -36,5 +52,3 @@ public class BinaryTree<K extends Comparable<K>> {
         }
     }
 }
-
-
